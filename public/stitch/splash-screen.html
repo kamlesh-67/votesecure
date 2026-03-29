@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VoteSecure - Secure Digital Voting</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inter Font for Editorial Authority -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#757681",
+              "inverse-primary": "#b6c4ff",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#ffddb3",
+              "error-container": "#ffdad6",
+              "surface-tint": "#495b9c",
+              "surface": "#f7f9ff",
+              "surface-variant": "#d1e4fb",
+              "on-primary-container": "#8799df",
+              "on-surface-variant": "#454650",
+              "secondary-fixed-dim": "#ffb951",
+              "on-secondary-fixed": "#291800",
+              "on-error": "#ffffff",
+              "tertiary-container": "#582500",
+              "background": "#f7f9ff",
+              "inverse-on-surface": "#e8f2ff",
+              "inverse-surface": "#203243",
+              "tertiary": "#371500",
+              "on-surface": "#091d2e",
+              "surface-container-high": "#d9eaff",
+              "secondary": "#825500",
+              "error": "#ba1a1a",
+              "primary": "#001857",
+              "surface-container-low": "#edf4ff",
+              "on-primary-fixed-variant": "#304382",
+              "surface-bright": "#f7f9ff",
+              "primary-fixed-dim": "#b6c4ff",
+              "surface-container": "#e3efff",
+              "on-secondary-fixed-variant": "#633f00",
+              "tertiary-fixed": "#ffdbc9",
+              "on-tertiary-fixed-variant": "#703710",
+              "surface-container-highest": "#d1e4fb",
+              "outline-variant": "#c5c5d2",
+              "secondary-container": "#fdab12",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#d68a5c",
+              "primary-fixed": "#dce1ff",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb68c",
+              "on-primary-fixed": "#001550",
+              "on-tertiary-fixed": "#321200",
+              "on-background": "#091d2e",
+              "primary-container": "#1b2f6e",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#684300",
+              "surface-dim": "#c9dcf3"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"],
+              "mono": ["JetBrains Mono", "monospace"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-diagonal-stripes {
+        background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-container font-body overflow-hidden">
+<!-- Splash Screen Container -->
+<main class="relative min-h-screen w-full flex flex-col items-center justify-center p-6 bg-diagonal-stripes">
+<!-- Background Artistic Element (Asymmetric Watermark) -->
+<div class="absolute top-[-10%] right-[-10%] opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[40rem] text-primary-fixed select-none" style="font-variation-settings: 'FILL' 1;">
+                verified_user
+            </span>
+</div>
+<div class="relative z-10 w-full max-w-[480px] flex flex-col items-center text-center space-y-12">
+<!-- Branding Cluster -->
+<div class="space-y-6">
+<!-- Logo Emblem -->
+<div class="relative inline-flex items-center justify-center">
+<!-- Glassmorphism Ring -->
+<div class="absolute inset-0 w-32 h-32 rounded-full border-4 border-secondary-container opacity-20"></div>
+<!-- Central Shield -->
+<div class="bg-surface-container-lowest w-24 h-24 rounded-full flex items-center justify-center shadow-[0_8px_32px_rgba(0,24,87,0.4)]">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">
+                            shield
+                        </span>
+<div class="absolute">
+<span class="material-symbols-outlined text-secondary-container text-4xl mt-2 ml-1" style="font-variation-settings: 'FILL' 1;">
+                                check
+                            </span>
+</div>
+</div>
+</div>
+<!-- App Name & Tagline -->
+<div class="space-y-2">
+<h1 class="font-headline font-extrabold text-[36px] text-white tracking-tighter uppercase leading-none">
+                        VoteSecure
+                    </h1>
+<p class="font-headline text-secondary-container font-semibold tracking-wide text-lg">
+                        Your Vote. Your Voice. Secured.
+                    </p>
+</div>
+</div>
+<!-- Loading Indicator (Static Representation of Progress) -->
+<div class="relative flex flex-col items-center space-y-4">
+<div class="relative w-16 h-16">
+<!-- Outer Ring Background -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-on-primary-container/20" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="3"></circle>
+<!-- Active Progress -->
+<circle class="text-secondary-container" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="45" stroke-width="3"></circle>
+</svg>
+</div>
+<!-- Data Layer Typography for System Status -->
+<span class="font-mono text-xs text-on-primary-container/80 tracking-widest uppercase">
+                    Initializing Node 0x4F2...
+                </span>
+</div>
+<!-- Bottom Disclaimer/Identity -->
+<div class="absolute bottom-8 w-full left-0 px-6">
+<div class="flex flex-col items-center space-y-3">
+<div class="h-[1px] w-12 bg-on-primary-container/20"></div>
+<p class="text-on-primary-container/60 text-[10px] font-medium uppercase tracking-[0.2em]">
+                        Powered by Election Commission
+                    </p>
+</div>
+</div>
+</div>
+<!-- Decorative Surface Texture (Bottom Left) -->
+<div class="absolute bottom-[-5%] left-[-5%] w-64 h-64 bg-secondary-container/5 blur-[100px] rounded-full"></div>
+</main>
+<!-- Invisible Image Prompts for Aesthetic Context (if any were required by task) -->
+<!-- The Splash screen uses mainly CSS and icons for the premium "Digital Sovereign" look as requested -->
+<!-- Example of structural imagery if we had a hero image (required by prompt even if not used) -->
+<div class="hidden">
+<img data-alt="microscopic detail of a high-security document paper with blue and gold security fibers under dramatic cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBFOlwaQdGJXB9E9jvexnA3c15SmyH0KQIRx4-BljVtdFVuWM2cYhfuc-uPEsNPZQ5m2rBYDFjAKLTSDODafJhwyNWRffUk1Ml-te_au2vrI-3HH-IY8LY4KOLOhsnM4F_NR-psfagX4wJZJ30hMYQq6gW1VynNkUPMSWZ5AGGKiUohTkTY5D4OqXxI3-smujcsboQC00t8KzNjTMnmlzR4QdPy_vWnEOmFfC4qx5qz52Thasih5Y_QGkT5oLCrWfMBjZu8xnQdCEf"/>
+</div>
+</body></html>

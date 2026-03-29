@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Voting Status | Digital Sovereign</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#203243",
+              "on-secondary-fixed": "#291800",
+              "on-secondary-container": "#684300",
+              "on-surface": "#091d2e",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "surface-variant": "#d1e4fb",
+              "secondary-fixed-dim": "#ffb951",
+              "surface-container-high": "#d9eaff",
+              "on-tertiary-fixed-variant": "#703710",
+              "on-primary-container": "#8799df",
+              "on-primary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#fdab12",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b6c4ff",
+              "secondary-fixed": "#ffddb3",
+              "error-container": "#ffdad6",
+              "tertiary": "#371500",
+              "tertiary-container": "#582500",
+              "on-secondary-fixed-variant": "#633f00",
+              "inverse-on-surface": "#e8f2ff",
+              "primary-container": "#1b2f6e",
+              "background": "#f7f9ff",
+              "on-secondary": "#ffffff",
+              "secondary": "#825500",
+              "primary-fixed": "#dce1ff",
+              "outline": "#757681",
+              "on-primary-fixed": "#001550",
+              "primary": "#001857",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdbc9",
+              "on-surface-variant": "#454650",
+              "outline-variant": "#c5c5d2",
+              "surface-bright": "#f7f9ff",
+              "on-tertiary-fixed": "#321200",
+              "on-primary-fixed-variant": "#304382",
+              "tertiary-fixed-dim": "#ffb68c",
+              "surface-tint": "#495b9c",
+              "surface": "#f7f9ff",
+              "surface-container": "#e3efff",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-tertiary-container": "#d68a5c",
+              "surface-container-low": "#edf4ff",
+              "surface-container-highest": "#d1e4fb",
+              "on-background": "#091d2e",
+              "surface-dim": "#c9dcf3"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(247, 249, 255, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        .sovereign-gradient {
+            background: linear-gradient(45deg, #001857, #1b2f6e);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex flex-col">
+<!-- TopAppBar - Fixed Navigation suppressed for transactional focus -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-4 bg-slate-50/40 backdrop-blur-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#1B2F6E]" data-icon="account_balance">account_balance</span>
+<span class="text-xl font-bold tracking-tighter text-[#1B2F6E]">Digital Sovereign</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-slate-500" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-6 pt-24 pb-12">
+<div class="max-w-md w-full space-y-12 text-center">
+<!-- Hero Illustration / Icon Area -->
+<div class="relative inline-block">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl scale-150"></div>
+<div class="relative w-32 h-32 mx-auto flex items-center justify-center rounded-full bg-surface-container-lowest shadow-sm">
+<div class="relative">
+<span class="material-symbols-outlined text-7xl text-primary" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+<div class="absolute -bottom-1 -right-1 bg-secondary-container p-2 rounded-full border-4 border-surface shadow-sm">
+<span class="material-symbols-outlined text-on-secondary-container font-bold text-xl" data-icon="check">check</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Content -->
+<div class="space-y-4">
+<h1 class="text-3xl font-extrabold tracking-tight text-on-surface">You Have Already Voted</h1>
+<p class="text-lg leading-relaxed text-on-surface-variant max-w-sm mx-auto">
+                    Your vote was successfully recorded on <span class="font-mono font-medium text-primary">March 29, 2025</span> at <span class="font-mono font-medium text-primary">14:32</span>. Each voter may only vote once.
+                </p>
+</div>
+<!-- Reference Card -->
+<div class="bg-surface-container-low p-6 rounded-xl space-y-3">
+<span class="text-[11px] font-bold uppercase tracking-widest text-slate-500">Vote Reference ID</span>
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center justify-between shadow-sm">
+<code class="font-mono text-lg font-bold text-primary tracking-tight">DS-7742-X9K-8821</code>
+<button class="text-primary-container hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<p class="text-sm text-on-surface-variant italic">Please save this ID for your secure records.</p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-6 pt-4">
+<div class="h-[1px] w-full bg-outline-variant/30"></div>
+<div class="flex flex-col items-center gap-4">
+<a class="text-primary font-bold text-sm tracking-wide uppercase hover:underline underline-offset-8 transition-all" href="#">
+                        Contact Administrator
+                    </a>
+<p class="text-xs text-slate-400 px-8">If you believe this is an error, please contact your local precinct office with your reference ID.</p>
+</div>
+</div>
+<!-- Visual Texture/Watermark (Asymmetric Design Rule) -->
+<div class="fixed -bottom-20 -right-20 opacity-[0.03] pointer-events-none rotate-12">
+<span class="material-symbols-outlined text-[24rem]" data-icon="verified_user">verified_user</span>
+</div>
+</div>
+</main>
+<!-- Footer Security Badge -->
+<footer class="py-8 flex flex-col items-center gap-2">
+<div class="flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="encrypted">encrypted</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary/70">Blockchain Verified Receipt</span>
+</div>
+<div class="w-full flex justify-center px-12 opacity-10">
+<img class="w-24 grayscale" data-alt="minimalist governmental crest with a modern digital line art style in deep navy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjuRErgu-Wl8b1xQuAd40-JcFrdYAk_LHrbKHC3_XlnUMVzWKLe3mBe8fwHJvgYJAkUp38GYNdZ3Fo3gXjjF8APPIaHM9foytCX1oQTbz6qfLIjrRdyyjaFOt5sKgXvkwJUe5jHApJhxGuGFGK5tPRp33q5Wb80CZDtU8hmF_TrWyp3CzGiYcOBCPB927-KirYtIEu_pGj_Mp8AWcA1oBBBtYOuqX2IFq0fvwGlBXbd8x6Mc0UXg9FIs3xx5OvzxtsDl_JEq7e5dMg"/>
+</div>
+</footer>
+<!-- No BottomNavBar rendered as per "Destination Rule" (Transactional focus) -->
+</body></html>

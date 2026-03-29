@@ -1,13 +1,100 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
-  provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Voter {
+  id                String    @id @default(cuid())
+  name              String
+  mobile            String    @unique
+  isActive          Boolean   @default(true)
+  hasVoted          Boolean   @default(false)
+  votedAt           DateTime?
+  voteReferenceId   String?   @unique
+  deviceFingerprint String?
+  ipAddress         String?
+  sessionToken      String?   @unique
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  vote              Vote?
+}
+
+model Candidate {
+  id           String   @id @default(cuid())
+  serialNumber Int      @unique
+  name         String
+  position     String?
+  party        String?
+  bio          String?
+  photoUrl     String?
+  symbolUrl    String?
+  isActive     Boolean  @default(true)
+  isNota       Boolean  @default(false)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  votes        Vote[]
+}
+
+model Vote {
+  id          String    @id @default(cuid())
+  referenceId String    @unique @default(cuid())
+  voterId     String    @unique
+  candidateId String
+  ipAddress   String
+  userAgent   String
+  castAt      DateTime  @default(now())
+  voter       Voter     @relation(fields: [voterId], references: [id])
+  candidate   Candidate @relation(fields: [candidateId], references: [id])
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  name      String
+  mobile    String   @unique
+  role      String   @default("admin")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model OtpLog {
+  id        String   @id @default(cuid())
+  mobile    String
+  otpHash   String
+  purpose   String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  attempts  Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([mobile])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  mobile    String?
+  adminId   String?
+  ipAddress String?
+  userAgent String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([action])
+  @@index([mobile])
+  @@index([createdAt])
+}
+
+model ElectionConfig {
+  id        String    @id @default("singleton")
+  title     String    @default("Election 2025")
+  isClosed  Boolean   @default(false)
+  closedAt  DateTime?
+  closedBy  String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }

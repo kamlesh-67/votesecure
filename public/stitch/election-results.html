@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VoteSecure Admin - Election Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed-variant": "#304382",
+                        "surface-dim": "#c9dcf3",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "outline": "#757681",
+                        "on-tertiary-fixed-variant": "#703710",
+                        "surface-variant": "#d1e4fb",
+                        "secondary": "#825500",
+                        "on-surface-variant": "#454650",
+                        "tertiary": "#371500",
+                        "on-surface": "#091d2e",
+                        "secondary-fixed": "#ffddb3",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#e8f2ff",
+                        "surface": "#f7f9ff",
+                        "primary": "#001857",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#d68a5c",
+                        "secondary-fixed-dim": "#ffb951",
+                        "surface-container-highest": "#d1e4fb",
+                        "inverse-surface": "#203243",
+                        "tertiary-fixed": "#ffdbc9",
+                        "surface-container-low": "#edf4ff",
+                        "on-secondary-fixed": "#291800",
+                        "surface-tint": "#495b9c",
+                        "on-secondary-container": "#684300",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-container": "#e3efff",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fdab12",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#8799df",
+                        "background": "#f7f9ff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#321200",
+                        "primary-fixed": "#dce1ff",
+                        "on-background": "#091d2e",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#633f00",
+                        "on-primary-fixed": "#001550",
+                        "tertiary-fixed-dim": "#ffb68c",
+                        "tertiary-container": "#582500",
+                        "surface-bright": "#f7f9ff",
+                        "primary-container": "#1b2f6e",
+                        "surface-container-high": "#d9eaff",
+                        "outline-variant": "#c5c5d2"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-[#edf4ff] dark:bg-slate-950 flex flex-col gap-2 p-4 z-40 hidden md:flex">
+<div class="mb-8 px-4">
+<h1 class="text-lg font-black text-[#1B2F6E] dark:text-blue-200">VoteSecure Admin</h1>
+<p class="text-xs text-slate-500 font-medium">System Oversight</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-medium text-sm">Candidates</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-medium text-sm">Voters List</span>
+</a>
+<a class="flex items-center gap-3 bg-white dark:bg-[#1B2F6E] text-[#1B2F6E] dark:text-white rounded-lg px-4 py-3 shadow-sm active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-medium text-sm">Results</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:bg-white/50 dark:hover:bg-slate-800 transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-4 flex items-center gap-3 bg-white/30 rounded-xl">
+<img alt="Admin User" class="w-10 h-10 rounded-full object-cover" data-alt="Professional headshot of a middle-aged male administrator with a confident smile in a corporate setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSoiMxPU-fMlKzSmjrkcXLfwV2XCBtjIjauECeu20h9zKN4A8AdYLdjXEF5TsNGndlExDhm2cdMqESYGHM9jUTze63n3L9SI2m88m5_dUcFcgg6l2mMNqFIBfzNS_NopDrGi7jU_oXYlH45Gd8NOxH3UVjXuNj7GnQ-ERDC4BIt7APND3qmfPscI_L0XKJHQWVqezGJsrOglxhj8In3rJoe3yh4-BzCytlWekQe2U3Po3I1qkPIeQxwTGM1hIqs7DeySku-OXsQJvx"/>
+<div>
+<p class="text-xs font-bold text-primary">Admin Profile</p>
+<p class="text-[10px] text-slate-500">Superuser Access</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md shadow-sm dark:shadow-none bg-gradient-to-b from-slate-50/50 to-transparent flex justify-between items-center px-6 py-3">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold text-[#1B2F6E] dark:text-blue-100 font-headline tracking-tight">Results Overview</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-600" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100/50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-slate-600" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<div class="p-6 md:p-8 max-w-7xl mx-auto space-y-8">
+<!-- Results Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-3">
+<h1 class="text-3xl font-extrabold text-primary tracking-tight">Student Council Election 2025</h1>
+<span class="px-3 py-1 rounded-full bg-on-surface text-white text-xs font-bold tracking-wider uppercase">Closed</span>
+</div>
+<p class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="event">event</span>
+                        Concluded on October 24, 2025 • 05:00 PM
+                    </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-3 rounded-full border border-outline-variant text-primary font-bold hover:bg-surface-container-low transition-all flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                        Export Results
+                    </button>
+<button class="px-8 py-3 rounded-full bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        Declare Results
+                    </button>
+</div>
+</div>
+<!-- Turnout Statistics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-2">
+<p class="text-on-surface-variant text-sm font-medium">Total Registered Voters</p>
+<p class="text-3xl font-mono font-bold text-primary">12,450</p>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full opacity-20"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-2">
+<p class="text-on-surface-variant text-sm font-medium">Total Votes Cast</p>
+<p class="text-3xl font-mono font-bold text-primary">10,892</p>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[87%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-2">
+<p class="text-on-surface-variant text-sm font-medium">Final Turnout %</p>
+<p class="text-3xl font-mono font-bold text-secondary">87.48%</p>
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[87%]"></div>
+</div>
+</div>
+</div>
+<!-- Winner Spotlight -->
+<div class="relative overflow-hidden bg-primary-container rounded-2xl p-8 md:p-12 text-white flex flex-col md:flex-row items-center gap-12">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-9xl" data-icon="military_tech">military_tech</span>
+</div>
+<!-- Winner Image with flourish -->
+<div class="relative shrink-0">
+<div class="absolute -inset-4 border-2 border-secondary-container/30 rounded-full animate-pulse"></div>
+<img alt="Winning Candidate" class="w-48 h-48 rounded-full object-cover border-4 border-secondary-container relative z-10" data-alt="Portrait of a young female student leader with a bright, confident expression, soft natural lighting, elegant composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJs0kBvfFK8EUm1vcXaBKTcc1iQlgB1enecTjCjrGBbd_rnZRHEs-e8m853Ke2S-7nOceObIPn_5bE_9XPBDkFKJxWZkqg823hGKulH9zq1tEcsbu1dpelBSiPXH_ODVRIjZ5ZnzzTcKpmna_4TpmVQ96XE6fFvI6US3lH-eAD6GM3EOt2rYbiMe8eDRQb2e1kTaVAC2nIpcOj1joPBabtdA2OaHuJZhVEZly6LlObH6loY5bHTVFFq5y07oZIaSo6hbUF42zoJGFB"/>
+<div class="absolute -bottom-2 right-4 bg-secondary-container text-primary font-black px-4 py-1 rounded-full shadow-xl flex items-center gap-1 z-20">
+<span class="material-symbols-outlined text-sm" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                        WINNER
+                    </div>
+</div>
+<div class="text-center md:text-left space-y-4 z-10">
+<div>
+<h2 class="text-secondary-container font-bold tracking-widest text-sm uppercase">President-Elect</h2>
+<h3 class="text-4xl md:text-5xl font-black tracking-tight">Sarah J. Montgomery</h3>
+</div>
+<div class="flex flex-wrap justify-center md:justify-start gap-8 py-2">
+<div>
+<p class="text-blue-200 text-sm">Total Votes Received</p>
+<p class="text-3xl font-mono font-bold">5,412</p>
+</div>
+<div class="h-12 w-px bg-white/20 hidden md:block"></div>
+<div>
+<p class="text-blue-200 text-sm">Victory Margin</p>
+<p class="text-3xl font-mono font-bold">49.6%</p>
+</div>
+</div>
+<p class="text-blue-100 max-w-lg leading-relaxed opacity-80">
+                        "Leading with integrity and innovation. Thank you for placing your trust in our collective vision for a better campus experience."
+                    </p>
+</div>
+</div>
+<!-- Main Results and Analytics Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Results Table (Left 2 columns) -->
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden">
+<div class="p-6 border-b border-surface-container flex justify-between items-center">
+<h3 class="font-bold text-xl text-primary">Candidate Breakdown</h3>
+<span class="text-sm font-medium text-on-surface-variant">6 Candidates</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant text-xs font-bold uppercase tracking-wider">
+<th class="px-6 py-4">Rank</th>
+<th class="px-6 py-4">Candidate</th>
+<th class="px-6 py-4">Votes</th>
+<th class="px-6 py-4">Progress</th>
+<th class="px-6 py-4 text-right">Percentage</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 font-mono font-bold text-primary">#01</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Candidate" class="w-10 h-10 rounded-full object-cover" data-alt="Close up of a professional student candidate smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDdfsLV1oviLFxT-ByfQD-ZEf9zJMrmq1XLRXiXbd-3etpv5ruJUEq9VYahLbbhARfw6EUCf9LI1E2sZDadJJW75GNkSLJNGmMWbIzHAeGTF0LWaD_LG_TBKBiZdQyI5NFynnGTkqjkZOeSIzOZ3cjPbLtwEYwg2dqYDDvhoI1sd_WS3eKBKFYMebG4yL1u69n0AA-5F2z9z9kGKP3TjvP7RlnylA8BV1UQyK0bHkHuueGLopha2QLeEX_Jw69lp7YBR_l4XbTijBb"/>
+<div>
+<p class="font-bold text-on-surface">Sarah J. Montgomery</p>
+<p class="text-xs text-on-surface-variant">Dept. of Law</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-mono">5,412</td>
+<td class="px-6 py-4 w-48">
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[49.6%]"></div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-mono font-bold">49.6%</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 font-mono font-bold text-primary">#02</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Candidate" class="w-10 h-10 rounded-full object-cover" data-alt="Close up of a confident male student candidate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoLAui-MXeSZW4emhnwHfNGxwu9ewNiaeUE4k3rWYyyYrhzbhPBCICeilPWKT_f6Bgfq6jAuNT1A60PtJ5RWQ41txd6Qp_Reb0c3ogEJblwxFqNW9V4H4TXSdPdarzZxBroPaU_IhgM40EPWwy235-BI7vAHYpJLCsoa7QZqawUPDrFCabzE-f6-_1YlbWV56B4UgN1vqOZOSW1mwF4FYYNDzA1SKwp3duipjjka5Fqmua_G8JeGZAd1Wnryr90piRc7ZYhCW13nac"/>
+<div>
+<p class="font-bold text-on-surface">David Chen</p>
+<p class="text-xs text-on-surface-variant">Computer Science</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-mono">3,105</td>
+<td class="px-6 py-4 w-48">
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[28.5%]"></div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-mono font-bold">28.5%</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-6 py-4 font-mono font-bold text-primary">#03</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<img alt="Candidate" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a female student candidate with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp86kWklJM7_WPlCu1DChh-apLAqVnsZP70bal7GoShVJNJFh8zJSSh7KOtlDtvlWmsq0UJ96LTpJ_vQenokfmQwdbR76hdOOnPXR8mYCdLEKVQvuXZC-aFKu4-GllSNXxmWX_KPMdk7wzihYJb0xgcm5W3zILbcPnV-gNpyzPQ2H-ivqM-mQL4CkeBKHygcnWklI4UkOV-VtyR6_As_c9hbyM91jIlAGeUS1Ke965VIV7eJpXWvoTjoSn-lZO0LrVGmiFf4Y_lHdY"/>
+<div>
+<p class="font-bold text-on-surface">Amara Okafor</p>
+<p class="text-xs text-on-surface-variant">Medicine &amp; Health</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-mono">1,540</td>
+<td class="px-6 py-4 w-48">
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[14.1%]"></div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-mono font-bold">14.1%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- NOTA Summary -->
+<div class="bg-surface-container-low border-l-4 border-secondary rounded-xl p-6 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+</div>
+<div>
+<h4 class="font-bold text-primary">None of the Above (NOTA)</h4>
+<p class="text-sm text-on-surface-variant">Neutral/Abstain Preference</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-2xl font-mono font-bold text-primary">835</p>
+<p class="text-xs font-bold text-secondary">7.8% of Total Votes</p>
+</div>
+</div>
+</div>
+<!-- Analytics (Right Column) -->
+<div class="space-y-8">
+<!-- Distribution Chart -->
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-6">
+<h4 class="font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="pie_chart">pie_chart</span>
+                            Vote Distribution
+                        </h4>
+<div class="aspect-square relative flex items-center justify-center">
+<!-- SVG Pie Chart Representation -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#e3efff" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#001857" stroke-dasharray="49.6 100" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#1b2f6e" stroke-dasharray="28.5 100" stroke-dashoffset="-49.6" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#495b9c" stroke-dasharray="14.1 100" stroke-dashoffset="-78.1" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.9" stroke="#fdab12" stroke-dasharray="7.8 100" stroke-dashoffset="-92.2" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<span class="text-2xl font-mono font-black text-primary">100%</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Captured</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs">
+<span class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-primary"></div>Sarah J.</span>
+<span class="font-mono font-bold">49.6%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-primary-container"></div>David Chen</span>
+<span class="font-mono font-bold">28.5%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-[#495b9c]"></div>Amara Okafor</span>
+<span class="font-mono font-bold">14.1%</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-secondary-container"></div>NOTA</span>
+<span class="font-mono font-bold">7.8%</span>
+</div>
+</div>
+</div>
+<!-- Voter Turnout by Department -->
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-6">
+<h4 class="font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-xl" data-icon="bar_chart">bar_chart</span>
+                            Turnout by Department
+                        </h4>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold text-on-surface-variant">
+<span>Engineering</span>
+<span>94%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold text-on-surface-variant">
+<span>Arts &amp; Humanities</span>
+<span>78%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold text-on-surface-variant">
+<span>Business</span>
+<span>89%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[89%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-bold text-on-surface-variant">
+<span>Law</span>
+<span>91%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[91%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-12 py-8 px-8 text-center text-on-surface-variant text-xs font-medium bg-surface-container-low">
+<p>© 2025 VoteSecure Administration Panel • Secured by Blockchain Technology</p>
+</footer>
+</main>
+<!-- Mobile Bottom NavBar (Visible only on mobile) -->
+<nav class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg flex justify-around items-center p-3 md:hidden z-50 border-t border-surface-container">
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-bold mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-[10px] font-bold mt-1">Candidates</span>
+</a>
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px] font-bold mt-1">Results</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-bold mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THE DIGITAL SOVEREIGN — Design System Tokens (Tailwind v4)
+   ============================================================ */
+
+@theme {
+  /* --- Color Palette --- */
+  --color-primary: #001857;
+  --color-primary-container: #1b2f6e;
+  --color-primary-fixed: #dce1ff;
+  --color-primary-fixed-dim: #b6c4ff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #8799df;
+  --color-on-primary-fixed: #001550;
+  --color-on-primary-fixed-variant: #304382;
+  --color-inverse-primary: #b6c4ff;
+
+  --color-secondary: #825500;
+  --color-secondary-container: #fdab12;
+  --color-secondary-fixed: #ffddb3;
+  --color-secondary-fixed-dim: #ffb951;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #684300;
+  --color-on-secondary-fixed: #291800;
+  --color-on-secondary-fixed-variant: #633f00;
+
+  --color-tertiary: #371500;
+  --color-tertiary-container: #582500;
+  --color-tertiary-fixed: #ffdbc9;
+  --color-tertiary-fixed-dim: #ffb68c;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #d68a5c;
+  --color-on-tertiary-fixed: #321200;
+  --color-on-tertiary-fixed-variant: #703710;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  --color-surface: #f7f9ff;
+  --color-surface-bright: #f7f9ff;
+  --color-surface-dim: #c9dcf3;
+  --color-surface-variant: #d1e4fb;
+  --color-surface-tint: #495b9c;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #edf4ff;
+  --color-surface-container: #e3efff;
+  --color-surface-container-high: #d9eaff;
+  --color-surface-container-highest: #d1e4fb;
+
+  --color-on-surface: #091d2e;
+  --color-on-surface-variant: #454650;
+  --color-on-background: #091d2e;
+  --color-background: #f7f9ff;
+
+  --color-outline: #757681;
+  --color-outline-variant: #c5c5d2;
+
+  --color-inverse-surface: #203243;
+  --color-inverse-on-surface: #e8f2ff;
+
+  /* --- Typography --- */
+  --font-family-headline: "Inter", sans-serif;
+  --font-family-body: "Inter", sans-serif;
+  --font-family-label: "Inter", sans-serif;
+  --font-family-mono: "JetBrains Mono", monospace;
+
+  /* --- Border Radius --- */
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+}
+
+/* ============================================================
+   Global Base Styles
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f7f9ff;
+  color: #091d2e;
+  min-height: 100dvh;
+}
+
+/* ============================================================
+   Material Symbols Outlined — icon font setup
+   ============================================================ */
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.material-symbols-filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+/* ============================================================
+   Glassmorphism Utilities
+   ============================================================ */
+
+.glass-effect {
+  background: rgba(247, 249, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.glass-header {
+  background: rgba(247, 249, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ============================================================
+   Signature Gradient Utilities
+   ============================================================ */
+
+.gradient-primary {
+  background: linear-gradient(45deg, #001857, #1b2f6e);
+}
+
+.gradient-sovereign {
+  background: linear-gradient(135deg, #001857 0%, #1b2f6e 50%, #304382 100%);
+}
+
+.bg-mesh {
+  background-color: #f7f9ff;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(217, 234, 255, 0.5) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(253, 171, 18, 0.05) 0px, transparent 50%);
+}
+
+.bg-diagonal-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+}
+
+/* ============================================================
+   OTP Input Styles
+   ============================================================ */
+
+.otp-input:focus {
+  border-color: #001857;
+  box-shadow: 0 0 0 4px rgba(27, 47, 110, 0.15);
+  outline: none;
+}
+
+.otp-filled {
+  background-color: #001857;
+  color: #ffffff;
+}
+
+/* ============================================================
+   Scroll Utilities
+   ============================================================ */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   Ambient Shadow Utilities
+   ============================================================ */
+
+.shadow-ambient {
+  box-shadow: 0 8px 24px rgba(9, 29, 46, 0.06);
+}
+
+.shadow-ambient-lg {
+  box-shadow: 0 8px 32px rgba(9, 29, 46, 0.12);
+}
+
+/* ============================================================
+   Animation Utilities
+   ============================================================ */
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.25s ease-out both;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 2s linear infinite;
+}

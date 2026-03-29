@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Sovereign Admin - Candidates</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#e8f2ff",
+                        "surface-tint": "#495b9c",
+                        "on-secondary-container": "#684300",
+                        "on-primary-fixed": "#001550",
+                        "tertiary-container": "#582500",
+                        "surface-bright": "#f7f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb68c",
+                        "surface-container-high": "#d9eaff",
+                        "on-secondary-fixed-variant": "#633f00",
+                        "surface-dim": "#c9dcf3",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fdab12",
+                        "surface-container": "#e3efff",
+                        "surface-container-low": "#edf4ff",
+                        "secondary-fixed-dim": "#ffb951",
+                        "on-secondary-fixed": "#291800",
+                        "outline": "#757681",
+                        "on-primary-fixed-variant": "#304382",
+                        "surface-container-highest": "#d1e4fb",
+                        "outline-variant": "#c5c5d2",
+                        "on-tertiary-fixed-variant": "#703710",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "primary-fixed": "#dce1ff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#454650",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#371500",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "background": "#f7f9ff",
+                        "on-background": "#091d2e",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#d68a5c",
+                        "on-primary-container": "#8799df",
+                        "secondary-fixed": "#ffddb3",
+                        "primary": "#001857",
+                        "surface-variant": "#d1e4fb",
+                        "secondary": "#825500",
+                        "inverse-primary": "#b6c4ff",
+                        "on-tertiary-fixed": "#321200",
+                        "surface": "#f7f9ff",
+                        "primary-container": "#1b2f6e",
+                        "on-surface": "#091d2e",
+                        "inverse-surface": "#203243"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9ff;
+            color: #091d2e;
+        }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-fixed selection:text-primary">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 bg-slate-50 dark:bg-slate-900 h-screen w-64 border-r-0 z-50">
+<div class="mb-8 px-4">
+<h1 class="text-xl font-bold tracking-tighter text-blue-950 dark:text-blue-100">The Sovereign</h1>
+<p class="text-xs text-slate-500 font-medium">Institutional Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-sans text-sm font-medium tracking-tight">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-sans text-sm font-medium tracking-tight">Voters List</span>
+</a>
+<!-- Active State: Candidates -->
+<a class="flex items-center gap-3 px-4 py-3 text-blue-900 dark:text-blue-200 bg-white dark:bg-blue-950 rounded-lg shadow-sm font-bold scale-95 duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">person_check</span>
+<span class="font-sans text-sm tracking-tight">Candidates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-sans text-sm font-medium tracking-tight">Results</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 border-t border-slate-200 pt-4">
+<button class="w-full mb-4 bg-primary text-on-primary rounded-full py-3 px-4 text-sm font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                Cast Final Ballot
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-500 dark:text-slate-400 hover:text-blue-800 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_outline">help_outline</span>
+<span class="text-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 py-3 z-40 bg-white/40 dark:bg-slate-950/40 backdrop-blur-xl border-b border-slate-100/20 shadow-sm">
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded-full w-96">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline" placeholder="Search for candidates..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full p-2 transition-opacity">
+<span class="material-symbols-outlined text-blue-900 dark:text-blue-400" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full p-2 transition-opacity">
+<span class="material-symbols-outlined text-blue-900 dark:text-blue-400" data-icon="verified_user">verified_user</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden bg-slate-200 ml-2">
+<img alt="Admin Profile" class="h-full w-full object-cover" data-alt="professional portrait of a man in formal attire with neutral background and soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMGsiTU_FBJA5OoGMOwgIkQmA8_PUB2e4wsK6LGYEErW2cBkaASuujyckx4a7zoQKZZ2_MFKyQlglswxpvBl3gs_JlERylX3scqz3Ow93LWMzBVpCdTSYkkEZK6cq_f3i18G0l-Ua6pPu22lCuisrdjeJJ1Ujc2SbBb5N4TEQ6W4DjmfLVBJ0xKNx-EeuHg6Hpx0gDjLDVaAWkeGaQ76NGHNJjVaeX6tjTiDvRRHnFYKNv7Jq4jKrojLTUcIMeh-4ircXPH1mJg5MC"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12">
+<!-- Header & Action -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-1">Candidates</h2>
+<p class="text-on-surface-variant font-medium">Review and manage official electoral candidates for the current cycle.</p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-8 py-3 rounded-full font-bold flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Add New Candidate
+            </button>
+</div>
+<!-- Summary Statistics (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-surface-container-lowest p-6 rounded-xl flex items-center gap-6">
+<div class="h-14 w-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="person_group">group</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">Total Candidates</p>
+<h3 class="text-3xl font-bold font-mono text-primary">12</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex items-center gap-6">
+<div class="h-14 w-14 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-3xl" data-icon="how_to_vote">how_to_vote</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">Active Elections</p>
+<h3 class="text-3xl font-bold font-mono text-secondary">03</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex items-center gap-6">
+<div class="h-14 w-14 rounded-full bg-surface-container-high flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-3xl" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider">Pending Approvals</p>
+<h3 class="text-3xl font-bold font-mono text-on-surface">02</h3>
+</div>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="bg-surface-container-low rounded-xl p-4 mb-6 flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/10">
+<span class="text-xs font-bold text-on-surface-variant">Position:</span>
+<select class="bg-transparent border-none text-sm font-semibold focus:ring-0 cursor-pointer">
+<option>All Positions</option>
+<option>President</option>
+<option>Governor</option>
+<option>Senator</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg border border-outline-variant/10">
+<span class="text-xs font-bold text-on-surface-variant">Status:</span>
+<select class="bg-transparent border-none text-sm font-semibold focus:ring-0 cursor-pointer">
+<option>All Statuses</option>
+<option>Active</option>
+<option>Inactive</option>
+<option>Disqualified</option>
+</select>
+</div>
+<div class="ml-auto text-sm text-on-surface-variant">
+                Showing <span class="font-mono font-bold text-on-surface">12</span> results
+            </div>
+</div>
+<!-- Candidate Table -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant border-none">
+<th class="py-4 px-6 font-bold text-xs uppercase tracking-widest">Candidate</th>
+<th class="py-4 px-6 font-bold text-xs uppercase tracking-widest">Position &amp; Party</th>
+<th class="py-4 px-6 font-bold text-xs uppercase tracking-widest">Symbol</th>
+<th class="py-4 px-6 font-bold text-xs uppercase tracking-widest">Serial</th>
+<th class="py-4 px-6 font-bold text-xs uppercase tracking-widest">Status</th>
+<th class="py-4 px-6 font-bold text-xs uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Johnathan Sterling" class="h-full w-full object-cover" data-alt="dignified middle-aged statesman with grey hair, navy suit, professional studio lighting against blue backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE-D2WSu56EkrNMv6zCS4O-2dfb_2PLwENuHJXiPcexo8cSpMqqfG-xFMyfa18GljDsysnX1ImlACgDSzXl_rmqaC-kMIYFAlT878j3XOvb04agP_zv28veCrzMpuSlq7Q6fsZGL0tDysFbKh9Mfb9HjSbv1CqEQIBbdO4DClJQFZcnkBTuiNzVctO11YcKZCAzpgTXu-bqn6_upyJfv1PvjZtk3hcC8ciWnqsepFUrVNC4oNDL5yqKRVjUbRUIwyXrcicevwjnpJE"/>
+</div>
+<div>
+<div class="font-bold text-on-surface">Johnathan Sterling</div>
+<div class="text-xs text-on-surface-variant">john.sterling@gov.secure</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-semibold text-primary">Presidential Nominee</div>
+<div class="text-xs font-medium text-secondary italic">Progressive Alliance</div>
+</td>
+<td class="py-4 px-6">
+<div class="h-8 w-8 rounded-md bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="rocket_launch">rocket_launch</span>
+</div>
+</td>
+<td class="py-4 px-6 font-mono text-sm">#SEC-00412</td>
+<td class="py-4 px-6">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-tight">Active</span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-primary" title="Edit">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-full text-error" title="Delete">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full text-on-surface" title="View Details">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-surface-container-high">
+<img alt="Elena Rodriguez" class="h-full w-full object-cover" data-alt="confident professional woman in grey blazer, bright office environment with natural sunlight and plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOP-UwAnQkM_M3nuzCMVc0A_IXXep3blmp7kCf0-H714ZFGykymZL0Qoxf8tP9ZgS81wxgDyQj6kB386mNWDCS__XLJnRkuiKng7KDBIfyVA5kv-LHrXoMCmY1VCv2ToopafyanViOZcpO7cID1-WWyRP0EVB7svvlUXz4ruX40RYswRRiaMDC_HaAwOMlgepEFbJxXWI_8GKjIMTj6KXaxomEhRCRs3xErlggsSFR6AD43eaKl2kc6GEbybftLNZVfYWd8j3Ohd4W"/>
+</div>
+<div>
+<div class="font-bold text-on-surface">Elena Rodriguez</div>
+<div class="text-xs text-on-surface-variant">e.rodriguez@vanguard.org</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-semibold text-primary">State Governor</div>
+<div class="text-xs font-medium text-secondary italic">Unity Coalition</div>
+</td>
+<td class="py-4 px-6">
+<div class="h-8 w-8 rounded-md bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="shield">shield</span>
+</div>
+</td>
+<td class="py-4 px-6 font-mono text-sm">#SEC-00895</td>
+<td class="py-4 px-6">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-tight">Active</span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-full text-error">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-4 px-6">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-error-container/30 grayscale">
+<img alt="Marcus Thorne" class="h-full w-full object-cover" data-alt="man with beard wearing black sweater in minimalist concrete architectural setting with shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6x4HeazmrQO3uY4WMR-PcQEgbtXFCd0Lz_hlBNHyZWEOS1x8QG1L6hkTbIC-IprccRX7mtiCzgFlMjO0QiunEy3dkL-ze26q9zO_4eZO47Z1aWDto5oAS5eFWg0mQvWRUisTFqjvarF02pymFZ40ivZjpgcaRAWNrl5ree6RDGVv_Oi9wb0zbh_kKdDkalPTu-nuBTpzts8jojpCKa6aWJEhMwtW6ldxhAMaki1GmWjdxhuTKyh1u-7Dj5wyE1XIvXn-sl9P0T7-t"/>
+</div>
+<div>
+<div class="font-bold text-on-surface">Marcus Thorne</div>
+<div class="text-xs text-on-surface-variant">m.thorne@indep.com</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-semibold text-primary">City Council</div>
+<div class="text-xs font-medium text-secondary italic">Independent</div>
+</td>
+<td class="py-4 px-6">
+<div class="h-8 w-8 rounded-md bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="bolt">bolt</span>
+</div>
+</td>
+<td class="py-4 px-6 font-mono text-sm">#SEC-00221</td>
+<td class="py-4 px-6">
+<span class="bg-surface-container text-outline px-3 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-tight">Inactive</span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container-high rounded-full text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/20 rounded-full text-error">
+<span class="material-symbols-outlined text-sm" data-icon="delete">delete</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="bg-surface-container-low px-6 py-4 flex items-center justify-between">
+<span class="text-xs font-medium text-on-surface-variant">Page 1 of 3</span>
+<div class="flex gap-2">
+<button class="h-8 w-8 rounded-full border border-outline-variant flex items-center justify-center text-outline hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="h-8 w-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold shadow-md">1</button>
+<button class="h-8 w-8 rounded-full bg-white text-on-surface-variant flex items-center justify-center text-sm font-bold hover:bg-primary-fixed/20 transition-colors">2</button>
+<button class="h-8 w-8 rounded-full bg-white text-on-surface-variant flex items-center justify-center text-sm font-bold hover:bg-primary-fixed/20 transition-colors">3</button>
+<button class="h-8 w-8 rounded-full border border-outline-variant flex items-center justify-center text-outline hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Visual Flair: Asymmetric Watermark -->
+<div class="fixed -bottom-20 -right-20 pointer-events-none opacity-[0.03] rotate-12 z-0">
+<span class="material-symbols-outlined text-[40rem]" data-icon="verified_user">verified_user</span>
+</div>
+</body></html>

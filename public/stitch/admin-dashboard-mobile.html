@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Sovereign - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f7f9ff",
+              "primary": "#001857",
+              "secondary-fixed": "#ffddb3",
+              "secondary-container": "#fdab12",
+              "surface-variant": "#d1e4fb",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#ffb951",
+              "on-primary": "#ffffff",
+              "surface-dim": "#c9dcf3",
+              "surface-tint": "#495b9c",
+              "surface": "#f7f9ff",
+              "outline": "#757681",
+              "on-tertiary-container": "#d68a5c",
+              "background": "#f7f9ff",
+              "on-tertiary": "#ffffff",
+              "primary-fixed-dim": "#b6c4ff",
+              "on-secondary-fixed-variant": "#633f00",
+              "surface-container-high": "#d9eaff",
+              "on-primary-fixed": "#001550",
+              "on-secondary-fixed": "#291800",
+              "outline-variant": "#c5c5d2",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#321200",
+              "error": "#ba1a1a",
+              "tertiary": "#371500",
+              "on-tertiary-fixed-variant": "#703710",
+              "surface-container-low": "#edf4ff",
+              "surface-container-highest": "#d1e4fb",
+              "tertiary-fixed-dim": "#ffb68c",
+              "tertiary-fixed": "#ffdbc9",
+              "on-primary-fixed-variant": "#304382",
+              "on-surface": "#091d2e",
+              "secondary": "#825500",
+              "on-surface-variant": "#454650",
+              "tertiary-container": "#582500",
+              "primary-fixed": "#dce1ff",
+              "on-secondary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container": "#e3efff",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#1b2f6e",
+              "inverse-on-surface": "#e8f2ff",
+              "on-primary-container": "#8799df",
+              "inverse-primary": "#b6c4ff",
+              "inverse-surface": "#203243",
+              "on-secondary-container": "#684300",
+              "on-background": "#091d2e"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"],
+              "mono": ["JetBrains Mono"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="bg-[#f7f9ff]/40 dark:bg-[#091d2e]/40 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full docked full-width top-0 sticky z-50 no-border transition-colors duration-300 shadow-[0_8px_24px_rgba(9,29,46,0.06)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border-2 border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up professional headshot of a mature government administrator in a dark suit against a neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeaUxOxYyzaWIRhe2GfoP4h700Jdr0BEzTjZTPrNSswn-xvkApKXKyAs7nFy9kCAQPZDNQKqjN8EECmMeiDxWJ9e1qkFtKWKLPKJIlHV_wJmR60j1W613LHD8isYBFaAkrVYFqEobBjlI6vfj9dCzvZSDoUUdexue2JFesyQitwQ_Lva3TkiaZRehYHtPlUn7Hp6EnaYj0jy5dkADlErzHCFV3sNbjcx0uaBHxYuqraW5o3S_85yToadORvkF3V928ZgDxdHCgXz6x"/>
+</div>
+<span class="text-xl font-bold tracking-tighter text-[#1B2F6E] dark:text-[#d9eaff]">Digital Sovereign</span>
+</div>
+<button class="text-slate-500 hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+</header>
+<main class="pb-32 pt-6 px-5 space-y-8 max-w-md mx-auto">
+<!-- Summary Metrics: Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Registered Voters -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col justify-between h-36">
+<span class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider">Total Registered</span>
+<div class="space-y-1">
+<span class="text-2xl font-mono font-bold text-primary leading-none">1,248,092</span>
+<div class="flex items-center gap-1 text-[10px] text-green-600 font-medium">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span>+2.4%</span>
+</div>
+</div>
+</div>
+<!-- Total Votes Cast -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col justify-between h-36">
+<span class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider">Total Cast</span>
+<div class="space-y-1">
+<span class="text-2xl font-mono font-bold text-primary leading-none">842,501</span>
+<div class="bg-secondary-fixed text-on-secondary-fixed text-[10px] px-2 py-0.5 rounded-full inline-block font-bold">LIVE</div>
+</div>
+</div>
+<!-- Voter Turnout Circular Indicator -->
+<div class="bg-primary-container p-5 rounded-xl flex flex-col items-center justify-center relative overflow-hidden h-36 group">
+<div class="absolute -right-4 -top-4 opacity-10 transform rotate-12 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-8xl text-white">how_to_vote</span>
+</div>
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-primary-fixed/20" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-secondary-container" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="57" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-sm font-mono font-bold text-white">67.5%</span>
+</div>
+<span class="text-on-primary-container text-[10px] mt-2 font-bold uppercase tracking-widest">Live Turnout</span>
+</div>
+<!-- Votes Remaining -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex flex-col justify-between h-36 border-l-4 border-secondary-container">
+<span class="text-on-surface-variant text-xs font-semibold uppercase tracking-wider">Remaining</span>
+<div class="space-y-1">
+<span class="text-2xl font-mono font-bold text-on-surface leading-none">405,591</span>
+<p class="text-[10px] text-outline italic">Est. 4h until close</p>
+</div>
+</div>
+</section>
+<!-- Live Turnout Chart -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-lg font-bold tracking-tight text-primary">Hourly Participation</h2>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="text-[10px] font-mono font-medium uppercase text-outline">Real-time</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl h-48 flex items-end justify-between gap-2">
+<!-- Simple bar representation for chart since JS is prohibited -->
+<div class="flex-1 bg-surface-container h-[40%] rounded-t-sm relative group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm"></div>
+</div>
+<div class="flex-1 bg-surface-container h-[55%] rounded-t-sm relative group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm"></div>
+</div>
+<div class="flex-1 bg-surface-container h-[75%] rounded-t-sm relative group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm"></div>
+</div>
+<div class="flex-1 bg-surface-container h-[60%] rounded-t-sm relative group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm"></div>
+</div>
+<div class="flex-1 bg-secondary-container h-[95%] rounded-t-sm relative">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-mono font-bold text-secondary">Peak</div>
+</div>
+<div class="flex-1 bg-surface-container h-[80%] rounded-t-sm relative group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm"></div>
+</div>
+<div class="flex-1 bg-surface-container h-[65%] rounded-t-sm relative group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm"></div>
+</div>
+<div class="flex-1 bg-surface-container h-[50%] rounded-t-sm relative group">
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-100 transition-opacity rounded-t-sm"></div>
+</div>
+</div>
+</section>
+<!-- Quick Actions -->
+<section class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-none flex items-center gap-2 bg-primary text-white px-5 py-3 rounded-full active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg">refresh</span>
+<span class="text-sm font-semibold">Refresh</span>
+</button>
+<button class="flex-none flex items-center gap-2 bg-surface-container-high text-primary px-5 py-3 rounded-full active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+<span class="text-sm font-semibold">Export Results</span>
+</button>
+<button class="flex-none flex items-center gap-2 bg-surface-container-high text-primary px-5 py-3 rounded-full active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg">how_to_reg</span>
+<span class="text-sm font-semibold">View Candidates</span>
+</button>
+</section>
+<!-- Activity Feed -->
+<section class="space-y-4">
+<h2 class="text-lg font-bold tracking-tight text-primary">Live Activity Feed</h2>
+<div class="space-y-3">
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">fingerprint</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Anonymized Hash: 8F3...A12</p>
+<p class="text-[10px] text-outline uppercase tracking-tighter">Verified by Precinct 042</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-mono font-bold text-primary">14:22:04</p>
+<p class="text-[10px] text-secondary font-bold">VALID</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">fingerprint</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Anonymized Hash: 4B9...D88</p>
+<p class="text-[10px] text-outline uppercase tracking-tighter">Verified by Precinct 109</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-mono font-bold text-primary">14:21:58</p>
+<p class="text-[10px] text-secondary font-bold">VALID</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">fingerprint</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-semibold truncate">Anonymized Hash: 2E1...F5C</p>
+<p class="text-[10px] text-outline uppercase tracking-tighter">Verified by Precinct 007</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-mono font-bold text-primary">14:21:30</p>
+<p class="text-[10px] text-secondary font-bold">VALID</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 text-sm font-bold text-primary/60 border border-primary/10 rounded-xl hover:bg-surface-container-low transition-colors">
+                Load Historical Logs
+            </button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-[#091d2e] shadow-[0_-4px_12px_rgba(0,0,0,0.03)] rounded-t-xl z-50">
+<!-- Active Tab: Dashboard -->
+<a class="flex flex-col items-center justify-center bg-[#edf4ff] dark:bg-[#1b2f6e] text-[#1B2F6E] dark:text-[#ffffff] rounded-2xl px-5 py-1.5 active:scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-normal mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-1.5 hover:text-[#1B2F6E] dark:hover:text-white active:scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-normal mt-1">Voters</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-1.5 hover:text-[#1B2F6E] dark:hover:text-white active:scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-normal mt-1">Candidates</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-1.5 hover:text-[#1B2F6E] dark:hover:text-white active:scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-normal mt-1">Results</span>
+</a>
+</nav>
+</body></html>
