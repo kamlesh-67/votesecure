@@ -1,9 +1,8 @@
 export const dynamic = "force-dynamic";
 
 import { NextRequest } from "next/server";
-import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
-import { otpVerifyLimiter } from "@/lib/redis";
+import { getOtpVerifyLimiter } from "@/lib/redis";
 import { verifyOtp } from "@/lib/otp";
 import { createVoterSession, createAdminSession, maskMobile } from "@/lib/session";
 import { logAudit } from "@/lib/audit";
@@ -11,10 +10,7 @@ import {
   ok, err, unauthorized, tooManyRequests, serverError, formatZodError, getIp,
 } from "@/lib/apiResponse";
 import { verifyOtpSchema } from "@/lib/validators";
-import { isDbConnectionError, DEMO_SESSION_VOTER } from "@/lib/demo-data";
-
-// In-memory OTP store shared with send-otp (module-level singleton within same process)
-const demoOtpStore = new Map<string, string>();
+import { isDbConnectionError, DEMO_SESSION_VOTER, demoOtpStore } from "@/lib/demo-data";
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,11 +22,10 @@ export async function POST(req: NextRequest) {
     const ip = getIp(req);
     const ua = req.headers.get("user-agent") ?? "";
 
-    // ── Rate limit (skip if Redis not configured) ─────────────────────────
-    try {
-      const { success: allowed } = await otpVerifyLimiter.limit(mobile);
-      if (!allowed) return tooManyRequests("Too many verification attempts.");
-    } catch { /* Redis not configured — skip */ }
+    // ── Resilient Rate limit (auto-passes if Redis not configured) ────────
+    const limiter = getOtpVerifyLimiter();
+    const { success: allowed } = await limiter.limit(mobile);
+    if (!allowed) return tooManyRequests("Too many verification attempts.");
 
     // ── Try real DB path ──────────────────────────────────────────────────
     try {
@@ -40,7 +35,11 @@ export async function POST(req: NextRequest) {
       });
 
       if (!otpLog) {
-        // Check demo OTP store as fallback within real-DB path (shouldn't happen, but safe)
+        // Double-check if the OTP is in the demo store even in the "real path"
+        // for seamless transitions if the DB went down after sending but before verifying.
+        if (demoOtpStore.has(`${mobile}:${purpose}`)) {
+            throw new Error("P1001: Demo mode recovery triggered.");
+        }
         return err("OTP has expired or was not requested. Please request a new OTP.", 400);
       }
 
@@ -88,22 +87,19 @@ export async function POST(req: NextRequest) {
       if (!isDbConnectionError(dbErr)) throw dbErr;
 
       // ── DEMO MODE ─────────────────────────────────────────────────────────
-      console.warn("[verify-otp] Demo mode: DB not reachable. Accepting OTP 123456.");
+      console.warn("[verify-otp] Demo mode fallback triggered. (DB unreachable)");
 
-      // Accept "123456" OR whatever was stored in demoOtpStore
+      // Accept whatever was stored in the centralized demoOtpStore, fallback to "123456"
       const storedOtp = demoOtpStore.get(`${mobile}:${purpose}`) ?? "123456";
       if (otp !== storedOtp && otp !== "123456") {
         return unauthorized("Incorrect OTP. Demo mode: use 123456.");
       }
 
-      // Create a demo JWT session cookie (real JWT, dummy voter/admin ID)
-      const cookieStore = await cookies();
-      const sessionCookieName = process.env.SESSION_COOKIE_NAME ?? "vs_session";
+      // Cleanup on sucessful verification
+      demoOtpStore.delete(`${mobile}:${purpose}`);
 
       if (purpose === "voter") {
-        // Mint a real JWT so requireVoterSession() works downstream
         await createVoterSession(DEMO_SESSION_VOTER.id, mobile);
-        demoOtpStore.delete(`${mobile}:${purpose}`);
         return ok({
           redirect: "/vote",
           hasVoted: false,
@@ -112,7 +108,6 @@ export async function POST(req: NextRequest) {
         });
       } else {
         await createAdminSession("demo-admin-id", mobile, "SUPER_ADMIN");
-        demoOtpStore.delete(`${mobile}:${purpose}`);
         return ok({
           redirect: "/admin/dashboard",
           admin: { name: "Demo Admin", role: "SUPER_ADMIN" },
@@ -122,7 +117,7 @@ export async function POST(req: NextRequest) {
     }
 
   } catch (e) {
-    console.error("[verify-otp]", e);
+    console.error("[verify-otp] Unhandled error:", e);
     return serverError();
   }
 }

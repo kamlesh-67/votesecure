@@ -139,6 +139,9 @@ export function isDemoMode(): boolean {
   );
 }
 
+// ── Demo OTP Store (shared singleton for demo mode) ──────────────────────────
+export const demoOtpStore = new Map<string, string>();
+
 /** Returns true for Prisma/network errors that indicate no DB connection */
 export function isDbConnectionError(err: unknown): boolean {
   if (!(err instanceof Error)) return false;

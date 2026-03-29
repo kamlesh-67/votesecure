@@ -4,7 +4,7 @@ import { prisma } from "./prisma";
 import { isDbConnectionError } from "./demo-data";
 import type { VoterPayload, AdminPayload } from "@/types";
 
-const JWT_SECRET = process.env.JWT_SECRET!;
+const JWT_SECRET = process.env.JWT_SECRET || "demo-secret-only-for-local-testing";
 const VOTER_COOKIE = process.env.SESSION_COOKIE_NAME ?? "vs_session";
 const ADMIN_COOKIE = process.env.ADMIN_SESSION_COOKIE_NAME ?? "vs_admin_session";
 
