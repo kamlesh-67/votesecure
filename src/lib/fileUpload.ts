@@ -1,27 +1,38 @@
 import { createClient } from "@supabase/supabase-js";
 import sharp from "sharp";
 
-// Server-side only — uses service role key for storage operations
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-);
+/**
+ * Lazy-initializes the Supabase client only when needed.
+ * This prevents the build from failing due to missing environment variables
+ * during page data collection/pre-rendering.
+ */
+function getSupabaseClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!url || !key) {
+    throw new Error(
+      "Supabase environment variables (NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) are missing. " +
+      "If you are in Demo Mode, these are required only for actual image uploads."
+    );
+  }
+
+  return createClient(url, key);
+}
 
 type StorageBucket = "candidates" | "symbols";
 
 /**
  * Optimizes an image with Sharp (resize + WebP), then uploads to Supabase Storage.
  * Returns the public URL of the uploaded file.
- *
- * @param file     - Raw file Buffer
- * @param filename - Base filename (without extension)
- * @param bucket   - "candidates" (photos) or "symbols" (party symbols)
  */
 export async function uploadCandidatePhoto(
   file: Buffer,
   filename: string,
   bucket: StorageBucket,
 ): Promise<string> {
+  const supabase = getSupabaseClient();
+  
   const resizeOptions =
     bucket === "candidates"
       ? { width: 400, height: 400 }
@@ -57,6 +68,7 @@ export async function deleteStorageFile(
   bucket: StorageBucket,
 ): Promise<void> {
   try {
+    const supabase = getSupabaseClient();
     const url = new URL(publicUrl);
     // Path format: /storage/v1/object/public/<bucket>/<filename>
     const parts = url.pathname.split(`/${bucket}/`);
@@ -64,7 +76,12 @@ export async function deleteStorageFile(
     const filePath = parts[1];
 
     await supabase.storage.from(bucket).remove([filePath]);
-  } catch {
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : "";
+    if (msg.includes("Supabase environment variables")) {
+      console.warn("[fileUpload] Skipping deletion: Supabase credentials missing (Demo Mode?).");
+      return;
+    }
     console.error("[fileUpload] Failed to delete storage file:", publicUrl);
   }
 }
